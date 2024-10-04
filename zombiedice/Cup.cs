@@ -12,7 +12,7 @@ namespace zombiedice
         /// <summary>
         /// initialises the dice in the cup
         /// </summary>
-        public Cup() 
+        public Cup()
         {
             _diceList = new List<Die>();
             //add 6 green dice
@@ -38,9 +38,24 @@ namespace zombiedice
         /// add die to cup
         /// </summary>
         /// <param name="die">die</param>
-        public void AddDie(Die die) 
+        public void AddDie(Die die)
         {
             _diceList.Add(die);
         }
+        /// <summary>
+        /// shakes cup and returns array with 3 dice
+        /// </summary>
+        /// <returns></returns>
+        public Die[] ShakeCup()
+        {
+            Random rand = new Random();
+            Die[] dice = new Die[3];
+            for (int i = 0; i < 3; i++)
+            {
+                dice[i] = _diceList[rand.Next(_diceList.Count)];
+            }
+            return dice;
+        }
+
     }
 }
