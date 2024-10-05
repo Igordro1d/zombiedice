@@ -8,6 +8,12 @@ namespace zombiedice
 {
     public abstract class Die
     {
+        public enum DieResult
+        {
+            Brain,
+            Shotgun,
+            Footprint
+        }
         protected DieResult[] _dieSideArray;
         /// <summary>
         /// create die with correct number for each facing
@@ -16,12 +22,6 @@ namespace zombiedice
         /// <param name="shotgun">number of sides with shotgun</param>
         /// <param name="footprint">number of sides with footprint</param>
         /// 
-        public enum DieResult
-        {
-            Brain,
-            Shotgun,
-            Footprint
-        }
         public Die(int brain, int shotgun, int footprint) 
         {
             _dieSideArray = new DieResult[6];

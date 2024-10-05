@@ -42,11 +42,15 @@ namespace zombiedice
         {
             _diceList.Add(die);
         }
+        public void RemoveDie(Die die)
+        {
+            _diceList.Remove(die);
+        }
         /// <summary>
         /// shakes cup and returns array with 3 dice
         /// </summary>
         /// <returns></returns>
-        public Die[] ShakeCup()
+        public Die[] ShakeCup(int numDice = 3)
         {
             Random rand = new Random();
             Die[] dice = new Die[3];

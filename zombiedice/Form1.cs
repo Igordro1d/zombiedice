@@ -12,9 +12,39 @@ namespace zombiedice
 {
     public partial class Form1 : Form
     {
+        Player player1;
+        Cup gameCup;
         public Form1()
         {
             InitializeComponent();
+            player1 = new Player();
+            gameCup = new Cup();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            player1.Hand(gameCup);
+            // if they get 3 shotgun they lose and restart their hand
+            if (player1.Shotguns >= 3)
+            {
+                MessageBox.Show("You got 3 shotguns! You lose!");
+                 
+            }
+            Console.WriteLine("Brains: " + player1.Brains + "\n" + "Shotguns: " + player1.Shotguns + "\n" + "Footprints: " + player1.Footprints);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            player1.RollAgain(gameCup);
+
+            
+            if (player1.Shotguns >= 3)
+            {
+                MessageBox.Show("You got 3 shotguns! You lose! Your turn is over.");
+                player1 = new Player();
+                gameCup = new Cup();     
+            }
         }
     }
 }
