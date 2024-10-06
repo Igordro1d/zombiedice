@@ -29,7 +29,7 @@ namespace zombiedice
             if (player1.Shotguns >= 3)
             {
                 MessageBox.Show("You got 3 shotguns! You lose!");
-                 
+                player1.Reset();
             }
             Console.WriteLine("Brains: " + player1.Brains + "\n" + "Shotguns: " + player1.Shotguns + "\n" + "Footprints: " + player1.Footprints);
         }
@@ -42,9 +42,14 @@ namespace zombiedice
             if (player1.Shotguns >= 3)
             {
                 MessageBox.Show("You got 3 shotguns! You lose! Your turn is over.");
-                player1 = new Player();
-                gameCup = new Cup();     
+                player1.Reset();    
             }
+            Console.WriteLine("Brains: " + player1.Brains + "\n" + "Shotguns: " + player1.Shotguns + "\n" + "Footprints: " + player1.Footprints);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            player1.Score += player1.Brains;
         }
     }
 }

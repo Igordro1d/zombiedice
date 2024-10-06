@@ -74,6 +74,13 @@ namespace zombiedice
                 }
             }
         }
+        public void Reset()
+        {
+            _brains = 0;
+            _shotguns = 0;
+            _footprints = 0;
+            _footprintDice.Clear();
+        }   
         /// <summary>
         /// rolls the dice in the hand that are footprints
         /// </summary>
