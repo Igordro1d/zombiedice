@@ -35,13 +35,9 @@ namespace zombiedice
 
         }
         /// <summary>
-        /// add die to cup
+        /// removes die from cup
         /// </summary>
-        /// <param name="die">die</param>
-        public void AddDie(Die die)
-        {
-            _diceList.Add(die);
-        }
+        /// <param name="die"></param>
         public void RemoveDie(Die die)
         {
             _diceList.Remove(die);

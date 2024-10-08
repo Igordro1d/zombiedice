@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace zombiedice
 {
@@ -80,6 +81,7 @@ namespace zombiedice
             _shotguns = 0;
             _footprints = 0;
             _footprintDice.Clear();
+            
         }   
         /// <summary>
         /// rolls the dice in the hand that are footprints
