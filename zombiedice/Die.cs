@@ -8,13 +8,13 @@ namespace zombiedice
 {
     public abstract class Die
     {
-        public enum DieResult
+        public enum DieValue
         {
             Brain,
             Shotgun,
             Footprint
         }
-        protected DieResult[] _dieSideArray;
+        protected DieValue[] _dieSideArray;
         /// <summary>
         /// create die with correct number for each facing
         /// </summary>
@@ -24,26 +24,26 @@ namespace zombiedice
         /// 
         public Die(int brain, int shotgun, int footprint) 
         {
-            _dieSideArray = new DieResult[6];
+            _dieSideArray = new DieValue[6];
             int index = 0;
             for (int i = 0; i < brain; i++)
             {
-                _dieSideArray[index++] = DieResult.Brain;
+                _dieSideArray[index++] = DieValue.Brain;
             }
             for (int i = 0; i < shotgun; i++)
             {
-                _dieSideArray[index++] = DieResult.Shotgun;
+                _dieSideArray[index++] = DieValue.Shotgun;
             }
             for (int i = 0; i < footprint; i++)
             {
-                _dieSideArray[index++] = DieResult.Footprint;
+                _dieSideArray[index++] = DieValue.Footprint;
             }
         }
         /// <summary>
         /// rolls die
         /// </summary>
         /// <returns>value of the facing</returns>
-        public DieResult Roll() 
+        public DieValue Roll() 
         {
             Random rand = new Random();
             return _dieSideArray[rand.Next(_dieSideArray.Length)];

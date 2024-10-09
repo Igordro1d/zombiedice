@@ -14,6 +14,8 @@ namespace zombiedice
         private int _footprints;
         private int _score;
         private List<Die> _footprintDice;
+        private List<Die> _leftoverDice;
+        private bool _isTurn;
         /// <summary>
         /// gets the number of brains the player has
         /// </summary>
@@ -31,6 +33,10 @@ namespace zombiedice
         /// </summary>
         public int Score { get { return _score; } set { _score = value; } }
         /// <summary>
+        /// checks if its the players turn
+        /// </summary>
+        public bool IsTurn { get { return _isTurn; } set { _isTurn = value; } }
+        /// <summary>
         /// creates a player
         /// </summary>
         public Player()
@@ -40,6 +46,8 @@ namespace zombiedice
             _footprints = 0;
             _score = 0;
             _footprintDice = new List<Die>();
+            _leftoverDice = new List<Die>();
+            _isTurn = true;
         }
         /// <summary>
         /// rolls the dice in the hand and updates the player's stats
@@ -54,21 +62,24 @@ namespace zombiedice
 
             foreach (Die d in diceToRoll)
             {
-                Die.DieResult result = d.Roll();  
+                Die.DieValue result = d.Roll();  
 
                 switch (result)
                 {
-                    case Die.DieResult.Brain:
+                    case Die.DieValue.Brain:
                         _brains++;            
-                        cup.RemoveDie(d);      
+                        cup.RemoveDie(d);
+                        _leftoverDice.Add(d);
+                        cup.AddDie(d);
                         break;
 
-                    case Die.DieResult.Shotgun:
+                    case Die.DieValue.Shotgun:
                         _shotguns++;           
-                        cup.RemoveDie(d);      
+                        cup.RemoveDie(d);
+                        _leftoverDice.Add(d);
                         break;
 
-                    case Die.DieResult.Footprint:
+                    case Die.DieValue.Footprint:
                         _footprints++;
                         cup.RemoveDie(d);
                         _footprintDice.Add(d); 
@@ -82,7 +93,8 @@ namespace zombiedice
             _shotguns = 0;
             _footprints = 0;
             _footprintDice.Clear();
-            
+            _leftoverDice.Clear();
+
         }   
         /// <summary>
         /// rolls the dice in the hand that are footprints
