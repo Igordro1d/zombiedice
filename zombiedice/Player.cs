@@ -69,7 +69,8 @@ namespace zombiedice
                         break;
 
                     case Die.DieResult.Footprint:
-                        _footprints++;         
+                        _footprints++;
+                        cup.RemoveDie(d);
                         _footprintDice.Add(d); 
                         break;
                 }
