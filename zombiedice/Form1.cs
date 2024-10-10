@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace zombiedice
 {
@@ -24,7 +25,8 @@ namespace zombiedice
         player2.IsTurn = false;  // Start with player1's turn
         gameCup = new Cup();
         buttonRollAgain.Visible = false; // roll again button hidden initially
-    }
+        listBox1.Items.Add("Player1:".PadRight(60) + "Player2:");
+        }
 
     /// <summary>
     /// Rolls dice for the current player
@@ -44,7 +46,7 @@ namespace zombiedice
                 }
             else
             {
-                
+                    DiceOnHand(player1, null);
                 Console.WriteLine("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
             }
         }
@@ -61,7 +63,7 @@ namespace zombiedice
                 }
             else
             {
-               
+               DiceOnHand(null, player2);
                 Console.WriteLine("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
             }
         }
@@ -88,8 +90,8 @@ namespace zombiedice
                 }
             else
             {
-                
-                Console.WriteLine("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
+                DiceOnHand(player1, null);
+                    Console.WriteLine("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
             }
         }
         else if (player2.IsTurn)
@@ -106,8 +108,8 @@ namespace zombiedice
                 }
             else
             {
-                
-                Console.WriteLine("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
+                DiceOnHand(null, player2);
+                    Console.WriteLine("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
             }
         }
 
@@ -165,6 +167,29 @@ namespace zombiedice
         buttonStart.Visible = true;   
         buttonRollAgain.Visible = false;  
     }
+
+     private void DiceOnHand(Player p1, Player p2) 
+        {
+            string p1Dice = "";
+            string p2Dice = "";
+            if (p1 != null)
+            {
+                string[] p1DiceArray = p1.CurrentDice.Select(die => die.ToString()).ToArray();
+                foreach (string die in p1DiceArray)
+                {
+                    p1Dice += die + ", ";
+                }
+            }
+            else if (p2 != null)
+            {
+                string[] p2DiceArray = p2.CurrentDice.Select(die => die.ToString()).ToArray();
+                foreach (string die in p2DiceArray)
+                {
+                    p2Dice += die + ", ";
+                }
+            }
+            listBox1.Items.Add(p1Dice.PadRight(65) + p2Dice);
+        }
 
     /// <summary>
     /// Resets the entire game for both players

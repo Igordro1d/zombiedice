@@ -15,7 +15,12 @@ namespace zombiedice
         private int _score;
         private List<Die> _footprintDice;
         private List<Die> _leftoverDice;
+        private List<Die> _currentDice;
         private bool _isTurn;
+        /// <summary>
+        /// gets the current dice in the player's hand
+        /// </summary>
+        public List<Die> CurrentDice { get { return _currentDice; } }
         /// <summary>
         /// gets the number of brains the player has
         /// </summary>
@@ -47,6 +52,7 @@ namespace zombiedice
             _score = 0;
             _footprintDice = new List<Die>();
             _leftoverDice = new List<Die>();
+            _currentDice = new List<Die>();
             _isTurn = true;
         }
         /// <summary>
@@ -59,11 +65,13 @@ namespace zombiedice
 
             // Reset footprints list at the start of the roll
             _footprintDice.Clear();
+            _currentDice.Clear();
 
             foreach (Die d in diceToRoll)
             {
+                _currentDice.Add(d);
                 Die.DieValue result = d.Roll();  
-
+                
                 switch (result)
                 {
                     case Die.DieValue.Brain:
@@ -86,6 +94,17 @@ namespace zombiedice
                         break;
                 }
             }
+        }
+        public string[] CurrentHand()
+        {
+            List<string> diceResults = new List<string>();
+
+            foreach (Die d in _currentDice)
+            {
+                diceResults.Add(d.GetType().Name); 
+            }
+
+            return diceResults.ToArray();
         }
         public void Reset()
         {

@@ -14,5 +14,9 @@ namespace zombiedice
         public Green_Die() : base(3, 1, 2)
         {
         }
+        public override string ToString()
+        {
+            return "Green Die";
+        }
     }
 }

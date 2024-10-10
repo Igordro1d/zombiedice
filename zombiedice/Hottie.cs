@@ -10,5 +10,9 @@ namespace zombiedice
     {
         public Hottie() : base(1, 2, 3)
         { }
+        public override string ToString()
+        {
+            return "Hottie Die";
+        }
     }
 }

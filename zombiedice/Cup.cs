@@ -64,9 +64,9 @@ namespace zombiedice
             Die[] dice = new Die[3];
             if (_diceList.Count < 3)
             {
-                // If no dice left in the cup, add set-aside brain dice back to the cup
+                // if no dice left in the cup, add set-aside brain dice back to the cup
                 _diceList.AddRange(_brainList);
-                _brainList.Clear();  // Clear the set-aside list after re-adding them
+                _brainList.Clear(); 
             }
             for (int i = 0; i < 3; i++)
             {
