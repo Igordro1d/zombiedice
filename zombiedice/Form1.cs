@@ -47,7 +47,7 @@ namespace zombiedice
             else
             {
                     DiceOnHand(player1, null);
-                Console.WriteLine("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
+                listBox2.Items.Add("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
             }
         }
         else if (player2.IsTurn)
@@ -64,7 +64,7 @@ namespace zombiedice
             else
             {
                DiceOnHand(null, player2);
-                Console.WriteLine("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
+                listBox2.Items.Add("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
             }
         }
 
@@ -91,7 +91,7 @@ namespace zombiedice
             else
             {
                 DiceOnHand(player1, null);
-                    Console.WriteLine("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
+                    listBox2.Items.Add("Player1: Brains: " + player1.Brains + " Shotguns: " + player1.Shotguns + " Footprints: " + player1.Footprints);
             }
         }
         else if (player2.IsTurn)
@@ -109,7 +109,7 @@ namespace zombiedice
             else
             {
                 DiceOnHand(null, player2);
-                    Console.WriteLine("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
+                    listBox2.Items.Add("Player2: Brains: " + player2.Brains + " Shotguns: " + player2.Shotguns + " Footprints: " + player2.Footprints);
             }
         }
 
@@ -156,7 +156,7 @@ namespace zombiedice
 
         
     }
-
+    
     /// <summary>
     /// Resets a player's stats at the end of their turn
     /// </summary>
@@ -167,8 +167,12 @@ namespace zombiedice
         buttonStart.Visible = true;   
         buttonRollAgain.Visible = false;  
     }
-
-     private void DiceOnHand(Player p1, Player p2) 
+        /// <summary>
+        /// Displays the dice in the player's hand
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        private void DiceOnHand(Player p1, Player p2) 
         {
             string p1Dice = "";
             string p2Dice = "";

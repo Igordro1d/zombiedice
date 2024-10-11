@@ -95,6 +95,10 @@ namespace zombiedice
                 }
             }
         }
+        /// <summary>
+        /// returns the current hand of the player
+        /// </summary>
+        /// <returns></returns>
         public string[] CurrentHand()
         {
             List<string> diceResults = new List<string>();
@@ -106,6 +110,9 @@ namespace zombiedice
 
             return diceResults.ToArray();
         }
+        /// <summary>
+        /// resets the player's stats
+        /// </summary>
         public void Reset()
         {
             _brains = 0;
